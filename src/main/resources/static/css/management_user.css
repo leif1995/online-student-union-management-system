@@ -1,0 +1,220 @@
+body {
+  background-image: url("/images/background.jpg");
+  background-size: 100%;
+}
+
+.div-head, .div-body {
+  width: 1280px;
+  margin: 10px auto;
+}
+
+.div-head {
+  height: 100px;
+  border-bottom-style: solid;
+  border-bottom-color: #9E9E9E;
+  border-radius: 6px;
+}
+
+.div-time {
+  float: right;
+}
+
+.div-navigation {
+  width: 1110px;
+  margin-left: 100px;
+  margin-top: -75px;
+}
+
+.div-content {
+  text-align: center;
+}
+
+.textarea-content {
+  width: 270px;
+  height: 100px;
+  border-radius: 6px;
+  border-color: #9E9E9E;
+}
+
+.div-link {
+  float: right;
+  margin-top: -40px;
+}
+
+.ul-link {
+  list-style: none;
+}
+
+.ul-link li {
+  margin-bottom: 5px;
+}
+
+.div-breadcrumb {
+  margin-left: 100px;
+}
+
+.breadcrumb {
+  background-color: rgba(0, 0, 0, 0);
+}
+
+.div-notice {
+  width: 1273px;
+  height: 30px;
+  float: left;
+  margin-top: -53px;
+  margin-left: 4px;
+  text-align: center;
+  line-height: 30px;
+  font-family: STKaiTi;
+  font-weight: bolder;
+  font-size: 24px;
+  color: #FF0000;
+}
+
+.div-body, .div-left, .div-right, .div-department-list {
+  height: 500px;
+}
+
+.div-left {
+  width: 245px;
+  border-right-style: solid;
+  border-right-color: #9E9E9E;
+  border-top-style: solid;
+  border-top-color: #9E9E9E;
+  border-radius: 6px;
+}
+
+.div-left li {
+  padding-bottom: 5px;
+  text-align: center;
+}
+
+.div-right {
+  width: 1025px;
+  float: right;
+  margin-top: -500px;
+  border-left-style: solid;
+  border-left-color: #9E9E9E;
+  border-top-style: solid;
+  border-top-color: #9E9E9E;
+  border-radius: 6px;
+}
+
+.div-department-list {
+  width: 135px;
+  overflow: auto;
+}
+
+.div-department-list li {
+  text-align: center;
+}
+
+.div-user-diagram-plan {
+  float: left;
+  margin-top: -500px;
+  margin-left: 135px;
+  border-left-style: dashed;
+  border-left-color: #9E9E9E;
+  border-bottom-style: dashed;
+  border-bottom-color: #9E9E9E;
+  border-radius: 6px;
+  width: 445px;
+  height: 445px;
+}
+
+.div-switch {
+  position: absolute;
+  top: 520px;
+  left: 570px;
+}
+
+.div-user-diagram-department-plan {
+  float: left;
+  margin-top: -500px;
+  margin-left: 580px;
+  border-left-style: dashed;
+  border-left-color: #9E9E9E;
+  border-bottom-style: dashed;
+  border-bottom-color: #9E9E9E;
+  border-radius: 6px;
+  width: 445px;
+  height: 445px;
+}
+
+.div-user-link-department-nickname {
+  float: left;
+  margin-top: -55px;
+  margin-left: 135px;
+  border-left-style: dashed;
+  border-left-color: #9E9E9E;
+  border-radius: 6px;
+  width: 890px;
+  height: 55px;
+  overflow: auto;
+}
+
+.ul-user-link-department-nickname {
+  list-style: none;
+  margin-left: -15px;
+}
+
+.ul-user-link-department-nickname li {
+  float: left;
+  margin-right: 10px;
+}
+
+.div-table {
+  background-color: #AEEEEE;
+  width: 1053px;
+  height: 501px;
+  border-radius: 6px;
+  position: absolute;
+  top: 122px;
+}
+
+.table-information td {
+  text-align: center;
+  vertical-align: middle;
+  border-style: solid;
+  border-color: #9E9E9E;
+  border-width: thin;
+}
+
+.input-nickname, .input-gender, .input-birthday, .input-major, .input-classs, .input-native-place, .input-username, .select-department-name, .input-department-name, .select-position-name, .input-position-name, .input-phone, .input-email, .input-qq {
+  width: 150px;
+  height: 30px;
+  border: none;
+  text-align: center;
+}
+
+.img-head-portrait {
+  border-style: solid;
+  border-color: #9E9E9E;
+  border-width: 3px;
+}
+
+.textarea-hobby, .textarea-self-appraisal, .textarea-department-understanding, .textarea-awards-and-achievements {
+  width: 680px;
+  height: 118px;
+  border: none;
+}
+
+.div-diagram {
+  width: 300px;
+  height: 270px;
+  float: right;
+  margin-top: -497px;
+  border-radius: 6px;
+}
+
+.div-button {
+  text-align: center;
+  width: 299px;
+  height: 100px;
+  float: right;
+  margin-top: -195px;
+}
+
+.div-button input {
+  margin-top: 10px;
+}

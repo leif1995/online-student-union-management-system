@@ -1,0 +1,169 @@
+body {
+  background-image: url("/images/background.jpg");
+  background-size: 100%;
+}
+
+.div-head, .div-body, .div-foot {
+  width: 1000px;
+  margin: 10px auto;
+}
+
+.div-head {
+  height: 245px;
+  border-bottom-style: solid;
+  border-bottom-color: #9E9E9E;
+  border-radius: 6px;
+}
+
+.img-logo {
+  margin-bottom: 50px;
+}
+
+.span-welcome {
+  font-family: STXingkai;
+  font-weight: bolder;
+  font-size: 32px;
+  color: #2E4358;
+  float: right;
+  margin-top: -70px;
+}
+
+.div-time {
+  position: absolute;
+  top: 15px;
+  right: 210px;
+}
+
+.div-notice {
+  width: 1000px;
+  height: 30px;
+  float: left;
+  margin-top: -30px;
+  text-align: center;
+  line-height: 30px;
+  font-family: STKaiTi;
+  font-weight: bolder;
+  font-size: 24px;
+  color: #FF0000;
+}
+
+.ul-navigate {
+  background-color: #F0F8FF;
+  border-radius: 6px;
+}
+
+.div-qrcode {
+  text-align: center;
+}
+
+.div-content {
+  text-align: center;
+}
+
+.textarea-content {
+  width: 270px;
+  height: 100px;
+  border-radius: 6px;
+  border-color: #9E9E9E;
+}
+
+.div-body {
+  height: 715px;
+  border-top-style: solid;
+  border-top-color: #9E9E9E;
+  border-bottom-style: solid;
+  border-bottom-color: #9E9E9E;
+  border-radius: 6px;
+}
+
+.div-area-one, .div-area-two, .div-area-three, .div-area-four {
+  width: 487px;
+  height: 345px;
+}
+
+.div-area-one img, .div-area-two img, .div-area-three img, .div-area-four img {
+  margin-top: -20px;
+}
+
+.div-area-one a {
+  line-height: 345px;
+}
+
+.carousel-inner, .carousel-inner img {
+  width: 487px;
+  height: 345px;
+}
+
+.a-indexs-name {
+  cursor: pointer;
+}
+
+.div-area-two, .div-area-four {
+  float: right;
+  margin-top: -345px;
+}
+
+.div-area-three {
+  margin-top: 10px;
+}
+
+.span-title {
+  font-family: STKaiTi;
+  font-weight: bolder;
+  font-size: 24px;
+  color: #2E4358;
+}
+
+.div-search {
+  float: right;
+  margin-top: -8px;
+  margin-right: -15px;
+}
+
+hr {
+  border-style: double;
+  border-color: #9E9E9E;
+  border-width: medium;
+  margin-top: 8px;
+}
+
+.div-table {
+  width: 512px;
+  height: 302px;
+  margin-top: -15px;
+  overflow: auto;
+}
+
+.tr-table {
+  border-bottom-style: solid;
+  border-bottom-width: thin;
+} 
+
+.div-name {
+  width: 413px;
+}
+
+.div-updated-time {
+  width: 74px;
+}
+
+.div-information, .div-footer, .div-information-attachment {
+  text-align: center;
+}
+
+.div-foot {
+  background-color: #F0F8FF;
+  height: 30px;
+  text-align: center;
+  line-height: 30px;
+  border-top-style: solid;
+  border-top-color: #9E9E9E;
+  border-radius: 6px;
+}
+
+.span-copyright {
+  font-family: STKaiTi;
+  font-weight: bolder;
+  font-size: 18px;
+  color: #2E4358;
+}

@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>软件学院学生会内部管理系统</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/css/recruitment_application.css" />
+  </head>
+  <body>
+    <div class="div-head">
+      <div class="div-time">
+        <span>${.now?string('yyyy年MM月dd日')}</span>
+        <span id="span_time"></span>
+      </div>
+      <img alt="logo" src="/images/logo.png" width="100px" height="100px" />
+      <div class="div-navigation">
+        <!-- 导航菜单start -->
+        <ul class="nav nav-pills nav-justified">
+          <li><a href="/activity/findActive">活动列表</a></li>
+          <li><a href="/plan/findActive">策划列表</a></li>
+          <li><a href="/department/findAll">管理列表</a></li>
+          <li><a href="/minutes/findByDepartmentName">会议记录</a></li>
+          <#if position.permission_id lte 4>
+            <li class="active"><a href="#">招新申请<span class="badge pull-right">${recruitmentApplicationCount}</span></a></li>
+          </#if>
+          <#if position.permission_id lte 1>
+            <li><a href="#" data-toggle="modal" data-target="#modal_notice">紧急通知</a></li>
+          </#if>
+        </ul>
+        <!-- 导航菜单end -->
+        <!-- 模态框start -->
+        <div id="modal_notice" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+              <div class="modal-header">
+                <input type="button" class="close" data-dismiss="modal" aria-hidden="true" value="&times;" />
+                <h4 class="modal-title" id="myModalLabel">请输入紧急通知内容</h4>
+              </div>
+              <div class="modal-body div-content">
+                <textarea id="textarea_content" class="textarea-content"></textarea>
+              </div>
+              <div class="modal-footer">
+                <input type="button" class="btn btn-default" data-dismiss="modal" value="取消" />
+                <input type="button" id="input_notice_submit" class="btn btn-primary" value="提交" />
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- 模态框end -->
+      </div>
+      <div class="div-link">
+        <ul class="ul-link">
+          <li><a href="/information">${user.nickname}</a></li>
+          <li><a href="/index/rjxy">返回首页</a></li>
+          <li><a href="/logout">退出登录</a></li>
+        </ul>
+      </div>
+      <!-- 面包屑start -->
+      <div class="div-breadcrumb"> 
+        <ol class="breadcrumb">
+          <li><a href="/index/rjxy">首页</a></li>
+          <li class="active">招新申请</li>
+        </ol>
+      </div>
+      <!-- 面包屑end -->
+      <div class="div-notice">
+        <p id="p_notice">${notice.content}</p>
+      </div>
+    </div>
+    <div class="div-body">
+      <div class="div-button">
+        <#if position.permission_id lte 1>
+          <input type="button" class="btn btn-danger" data-toggle="modal" data-target="#modal_remove_all" value="结束招新" />
+        </#if>
+      </div>
+      <#if recruitmentList?size gt 0>
+        <!-- 悬停表格start -->
+        <div class="div-table"> 
+          <table class="table-hover">
+            <tr height="30px" class="tr-title">
+              <th><span>序号</span></th>
+              <th><span>姓名</span></th>
+              <th><span>性别</span></th>
+              <th><span>专业</span></th>
+              <th><span>班级</span></th>
+              <th><span>籍贯</span></th>
+              <th><span>学号</span></th>
+              <th><span>面试部门</span></th>
+              <th><span>是否调剂</span></th>
+              <th><span>手机</span></th>
+              <th><span>状态</span></th>
+              <th><span>审核时间</span></th>
+              <th><span>审核人</span></th>
+              <#if position.permission_id lte 3>
+                <th><span>操作</span></th>
+              </#if>
+            </tr>
+            <#list recruitmentList as recruitment>
+              <tr height="50px" class="tr-table">
+                <td><div class="div-index"><span>${recruitment_index + 1}</span></div></td>
+                <td><div class="div-nickname"><a href="/recruitment/information/${recruitment.id}">${recruitment.nickname}</a></div></td>
+                <td><div class="div-gender"><span>${recruitment.gender}</span></div></td>
+                <td><div class="div-major"><span>${recruitment.major}</span></div></td>
+                <td><div class="div-classs"><span>${recruitment.classs}</span></div></td>
+                <td><div class="div-native_place"><span>${recruitment.native_place}</span></div></td>
+                <td><div class="div-username"><span>${recruitment.username}</span></div></td>
+                <td><div class="div-department_name"><span>${recruitment.department_name}</span></div></td>
+                <td><div class="div-swap"><span>${recruitment.swap}</span></div></td>
+                <td><div class="div-phone"><span>${recruitment.phone}</span></div></td>
+                <td><div class="div-status"><span>${recruitment.status}</span></div></td>
+                <td><div class="div-updated-time"><span>${recruitment.updated_time}</span></div></td>
+                <td><div class="div-updated-by"><span>${recruitment.updated_by}</span></div></td>
+                <td>
+                  <#if (position.permission_id lte 2 && "通过" != recruitment.status) || (position.permission_id lte 3 && user.department_name == recruitment.department_name && "申请" == recruitment.status) || (position.permission_id lte 3 && user.department_name != recruitment.department_name && "淘汰" == recruitment.status && "是" == recruitment.swap)>
+                    <input type="button" class="btn btn-success" data-toggle="modal" data-target="#modal_change_for_pass" value="通过" />
+                    <input type="button" class="btn btn-danger" data-toggle="modal" data-target="#modal_change_for_remove" value="淘汰" />
+                  </#if>
+                  <input type="hidden" value="${recruitment.id}" />
+                  <input type="hidden" class="department-name" value="${user.department_name}" />
+                </td>
+              </tr>
+            </#list>
+          </table>
+        </div>    
+        <!-- 悬停表格end -->
+      <#else>
+        <img class="img-no-data" alt="no_data" src="/images/no_data.jpg" width="1280px" height="382px" />
+      </#if>
+      <!-- 分页start -->
+      <div class="div-pagination">
+        <ul class="pagination">
+          <li id="li_laquo"><a href="#">&laquo;</a></li>
+          <li id="li_lt"><a href="#">&lt;</a></li>
+          <li class="active"><a href="#" id="a_current_page">${currentPage}</a></li>
+          <li id="li_gt"><a href="#">&gt;</a></li>
+          <li id="li_raquo"><a href="#">&raquo;</a></li>
+          <li><a href="#" id="a_page_count">共&nbsp;${pageCount}&nbsp;页</a></li>
+          <li><a href="#"><input type="number" id="input_go" class="input-go" /></a></li>
+          <li id="li_go"><a href="#">Go</a></li>
+        </ul>
+      </div>
+      <!-- 分页end -->
+      <!-- 模态框start -->
+      <div id="modal_remove_all" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-sm">
+          <div class="modal-content">
+            <div class="modal-header">
+              <input type="button" class="close" data-dismiss="modal" aria-hidden="true" value="&times;" />
+              <h4 class="modal-title" id="myModalLabel">确定结束招新吗</h4>
+            </div>
+            <div class="modal-footer">
+              <input type="button" class="btn btn-default" data-dismiss="modal" value="取消" />
+              <input type="button" id="input_remove_all_submit" class="btn btn-danger" value="结束招新" />
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- 模态框end -->
+      <!-- 模态框start -->
+      <div id="modal_change_for_pass" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-sm">
+          <div class="modal-content">
+            <div class="modal-header">
+              <input type="button" class="close" data-dismiss="modal" aria-hidden="true" value="&times;" />
+              <h4 class="modal-title" id="myModalLabel">确定通过吗</h4>
+            </div>
+            <div class="modal-body">
+              <table>
+                <tr height="50px">
+                  <td><span>姓名：</span></td>
+                  <td><span id="span_change_for_pass_nickname"></span></td>
+                </tr>
+                <tr height="50px">
+                  <td><span>性别：</span></td>
+                  <td><span id="span_change_for_pass_gender"></span></td>
+                </tr>
+                <tr height="50px">
+                  <td><span>学号：</span></td>
+                  <td><span id="span_change_for_pass_username"></span></td>
+                </tr>
+              </table>
+            </div>
+            <div class="modal-footer">
+              <input type="button" class="btn btn-default" data-dismiss="modal" value="取消" />
+              <input type="button" id="input_change_for_pass_submit" class="btn btn-success" value="通过" />
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- 模态框end -->
+      <!-- 模态框start -->
+      <div id="modal_change_for_remove" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-sm">
+          <div class="modal-content">
+            <div class="modal-header">
+              <input type="button" class="close" data-dismiss="modal" aria-hidden="true" value="&times;" />
+              <h4 class="modal-title" id="myModalLabel">确定淘汰吗</h4>
+            </div>
+            <div class="modal-body">
+              <table>
+                <tr height="50px">
+                  <td><span>姓名：</span></td>
+                  <td><span id="span_change_for_remove_nickname"></span></td>
+                </tr>
+                <tr height="50px">
+                  <td><span>性别：</span></td>
+                  <td><span id="span_change_for_remove_gender"></span></td>
+                </tr>
+                <tr height="50px">
+                  <td><span>学号：</span></td>
+                  <td><span id="span_change_for_remove_username"></span></td>
+                </tr>
+              </table>
+            </div>
+            <div class="modal-footer">
+              <input type="button" class="btn btn-default" data-dismiss="modal" value="取消" />
+              <input type="button" id="input_change_for_remove_submit" class="btn btn-danger" value="淘汰" />
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- 模态框end -->
+    </div>
+  </body>
+  <script src="/js/jquery-3.3.1.min.js"></script>
+  <script src="/js/bootstrap.min.js"></script>
+  <script src="/js/recruitment_application.js"></script>
+</html>

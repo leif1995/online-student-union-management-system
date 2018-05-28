@@ -1,0 +1,14 @@
+.box a{text-decoration:none;}
+.box ul, .box li{list-style:none;}
+
+.box {
+  width: 596px;
+  margin-left: -14px;
+}
+
+.box_l, .box_r{width:260px;height:360px;border:1px solid #ccc;overflow: auto;}
+.box_l li, .box_r li{line-height:35px;font-size:14px;padding-left:10px;border-bottom:1px solid #CCCCCC;cursor:pointer;}
+.box_l li:last-child, .box_r li:last-child{border:none;}
+.box_l li:hover, .box_r li:hover, .box_l li.on, .box_r li.on{background:#3672a0;color:#FFFFFF;}
+.box_l{float:left;}
+.box_r{float:right;}

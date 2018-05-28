@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>软件学院学生会内部管理系统</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/css/management_department.css" />
+  </head>
+  <body>
+    <div class="div-head">
+      <div class="div-time">
+        <span>${.now?string('yyyy年MM月dd日')}</span>
+        <span id="span_time"></span>
+      </div>
+      <img alt="logo" src="/images/logo.png" width="100px" height="100px" />
+      <div class="div-navigation">
+        <!-- 导航菜单start -->
+        <ul class="nav nav-pills nav-justified">
+          <li><a href="/activity/findActive">活动列表</a></li>
+          <li><a href="/plan/findActive">策划列表</a></li>
+          <li class="active"><a href="#">管理列表</a></li>
+          <li><a href="/minutes/findByDepartmentName">会议记录</a></li>
+          <#if position.permission_id lte 4>
+            <li><a href="/recruitment/findApplication">招新申请<span class="badge pull-right">${recruitmentApplicationCount}</span></a></li>
+          </#if>
+          <#if position.permission_id lte 1>
+            <li><a href="#" data-toggle="modal" data-target="#modal_notice">紧急通知</a></li>
+          </#if>
+        </ul>
+        <!-- 导航菜单end -->
+        <!-- 模态框start -->
+        <div id="modal_notice" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+              <div class="modal-header">
+                <input type="button" class="close" data-dismiss="modal" aria-hidden="true" value="&times;" />
+                <h4 class="modal-title" id="myModalLabel">请输入紧急通知内容</h4>
+              </div>
+              <div class="modal-body div-content">
+                <textarea id="textarea_content" class="textarea-content"></textarea>
+              </div>
+              <div class="modal-footer">
+                <input type="button" class="btn btn-default" data-dismiss="modal" value="取消" />
+                <input type="button" id="input_notice_submit" class="btn btn-primary" value="提交" />
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- 模态框end -->
+      </div>
+      <div class="div-link">
+        <ul class="ul-link">
+          <li><a href="/information">${user.nickname}</a></li>
+          <li><a href="/index/rjxy">返回首页</a></li>
+          <li><a href="/logout">退出登录</a></li>
+        </ul>
+      </div>
+      <!-- 面包屑start -->
+      <div class="div-breadcrumb"> 
+        <ol class="breadcrumb">
+          <li><a href="/index/rjxy">首页</a></li>
+          <li class="active">部门管理</li>
+        </ol>
+      </div>
+      <!-- 面包屑end -->
+      <div class="div-notice">
+        <p id="p_notice">${notice.content}</p>
+      </div>
+    </div>
+    <div class="div-body">
+      <div class="div-left">
+        <!-- 导航菜单start -->
+        <ul class="nav nav-pills nav-stacked">
+          <li class="active"><a href="#">部门管理</a></li>
+          <li><a href="/findAll">成员管理</a></li>
+          <li><a href="/index/findAll">首页管理</a></li>
+        </ul>
+        <!-- 导航菜单end -->
+      </div>
+      <div class="div-right">
+        <div class="div-department-list">
+          <!-- 导航菜单start -->
+	      <ul class="nav nav-pills nav-stacked">
+	        <#list departmentList as department>
+	          <#if position.permission_id lte 2 || user.department_name == department.department_name || "组织部" == user.department_name>
+	            <li>
+	              <a class="a-department-name" href="#">${department.department_name}</a>
+	              <input type="hidden" value="${department.id}" />
+	            </li>
+	          </#if>
+	        </#list>
+	      </ul>
+	      <!-- 导航菜单end -->
+        </div>
+        <div id="div_department_diagram_plan" class="div-department-diagram-plan"></div>
+        <div id="div_department_diagram_type" class="div-department-diagram-type"></div>
+        <div id="div_department_diagram_people" class="div-department-diagram-people"></div>
+        <a href="#" id="a_position_number" class="a-position-number">职务人数</a>
+        <a href="#" id="a_department_number" class="a-department-number">部门人数</a>
+        <div class="div-department-introduction">
+          <p id="p_department_name">学生会介绍</p>
+          <#if position.permission_id lte 4>
+            <textarea id="textarea_introduction" class="textarea-introduction">${studentUnion!}</textarea>
+          <#else>
+            <textarea id="textarea_introduction" class="textarea-introduction" readonly>${studentUnion!}</textarea>
+          </#if>
+          <#if position.permission_id lte 1>
+            <input type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal_create" value="新增部门" />
+	      </#if>
+	      <#if position.permission_id lte 4>
+	        <input type="button" id="input_change_submit" class="btn btn-info" value="保存" />
+	      </#if>
+	      <#if position.permission_id lte 1>
+	        <input type="button" id="input_remove" class="btn btn-danger" data-toggle="modal" data-target="#modal_remove_submit" value="删除部门" />
+          </#if>
+        </div>
+      </div>
+    </div>
+    <!-- 模态框start -->
+    <div id="modal_create" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+          <div class="modal-header">
+            <input type="button" class="close" data-dismiss="modal" aria-hidden="true" value="&times;" />
+            <h4 class="modal-title" id="myModalLabel">请输入新部门名称</h4>
+          </div>
+          <div class="modal-body">
+            <!-- 输入框组start -->
+            <div class="input-group">
+              <label for="input_department_name" class="input-group-addon">部门名称：</label>
+              <input type="text" id="input_department_name" class="form-control" placeholder="请输入新部门名称">
+            </div>
+            <!-- 输入框组end -->
+          </div>
+          <div class="modal-footer">
+            <input type="button" class="btn btn-default" data-dismiss="modal" value="取消" />
+            <input type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal_create_submit" value="提交" />
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- 模态框end -->
+    <!-- 模态框start -->
+    <div id="modal_create_submit" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+          <div class="modal-header">
+            <input type="button" class="close" data-dismiss="modal" aria-hidden="true" value="&times;" />
+            <h4 class="modal-title" id="myModalLabel">确定新增吗</h4>
+          </div>
+          <div class="modal-footer">
+            <input type="button" class="btn btn-default" data-dismiss="modal" value="取消" />
+            <input type="button" id="input_create_submit" class="btn btn-primary" value="确定" />
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- 模态框end -->
+    <!-- 模态框start -->
+    <div id="modal_remove_submit" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+          <div class="modal-header">
+            <input type="button" class="close" data-dismiss="modal" aria-hidden="true" value="&times;" />
+            <h4 class="modal-title" id="myModalLabel">确定删除吗</h4>
+          </div>
+          <div class="modal-footer">
+            <input type="button" class="btn btn-default" data-dismiss="modal" value="取消" />
+            <input type="button" id="input_remove_submit" class="btn btn-danger" value="确定" />
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- 模态框end -->
+  </body>
+  <script src="/js/jquery-3.3.1.min.js"></script>
+  <script src="/js/bootstrap.min.js"></script>
+  <script src="/js/management_department.js"></script>
+  <script src="/js/diagram/amcharts.js"></script>
+  <script src="/js/diagram/serial.js"></script>
+  <script src="/js/diagram/amexport.js"></script>
+  <script src="/js/diagram/rgbcolor.js"></script>
+  <script src="/js/diagram/canvg.js"></script>
+  <script src="/js/diagram/jspdf.js"></script>
+  <script src="/js/diagram/filesaver.js"></script>
+  <script src="/js/diagram/jspdf.plugin.addimage.js"></script>
+</html>

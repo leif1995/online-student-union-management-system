@@ -1,0 +1,116 @@
+body {
+  background-image: url("/images/background.jpg");
+  background-size: 100%;
+}
+
+.div-head, .div-body {
+  width: 1280px;
+  margin: 10px auto;
+}
+
+.div-head {
+  height: 100px;
+  border-bottom-style: solid;
+  border-bottom-color: #9E9E9E;
+  border-radius: 6px;
+}
+
+.div-time {
+  float: right;
+}
+
+.div-navigation {
+  width: 1110px;
+  margin-left: 100px;
+  margin-top: -75px;
+}
+
+.div-content {
+  text-align: center;
+}
+
+.textarea-content {
+  width: 270px;
+  height: 100px;
+  border-radius: 6px;
+  border-color: #9E9E9E;
+}
+
+.div-link {
+  float: right;
+  margin-top: -40px;
+}
+
+.ul-link {
+  list-style: none;
+}
+
+.ul-link li {
+  margin-bottom: 5px;
+}
+
+.div-breadcrumb {
+  margin-left: 100px;
+}
+
+.breadcrumb {
+  background-color: rgba(0, 0, 0, 0);
+}
+
+.div-notice {
+  width: 1273px;
+  height: 30px;
+  float: left;
+  margin-top: -53px;
+  margin-left: 4px;
+  text-align: center;
+  line-height: 30px;
+  font-family: STKaiTi;
+  font-weight: bolder;
+  font-size: 24px;
+  color: #FF0000;
+}
+
+.div-body, .div-table {
+  height: 500px;
+}
+
+.div-body {
+  border-top-style: solid;
+  border-top-color: #9E9E9E;
+  border-radius: 6px;
+}
+
+.table-information td {
+  text-align: center;
+  vertical-align: middle;
+  border-style: solid;
+  border-color: #9E9E9E;
+  border-width: thin;
+}
+
+.input-nickname, .input-gender, .input-birthday, .input-major, .input-classs, .input-native-place, .input-username, .input-department-name, .input-swap, .input-phone, .input-email, .input-qq {
+  width: 150px;
+  height: 30px;
+  border: none;
+  text-align: center;
+}
+
+.img-head-portrait {
+  border-style: solid;
+  border-color: #9E9E9E;
+  border-width: 3px;
+}
+
+.textarea-hobby, .textarea-self-appraisal, .textarea-department-understanding, .textarea-awards-and-achievements {
+  width: 680px;
+  height: 88px;
+  border: none;
+}
+
+.div-button {
+  float: right;
+  margin-top: -250px;
+  margin-right: -60px;
+  text-align: center;
+}

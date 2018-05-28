@@ -1,0 +1,134 @@
+body {
+  background-image: url("/images/background.jpg");
+  background-size: 100%;
+}
+
+.div-head, .div-body, .div-foot {
+  width: 1000px;
+  margin: 10px auto;
+}
+
+.div-head {
+  height: 245px;
+  border-bottom-style: solid;
+  border-bottom-color: #9E9E9E;
+  border-radius: 6px;
+}
+
+.img-logo {
+  margin-bottom: 50px;
+}
+
+.span-welcome {
+  font-family: STXingkai;
+  font-weight: bolder;
+  font-size: 32px;
+  color: #2E4358;
+  float: right;
+  margin-top: -70px;
+}
+
+.div-time {
+  position: absolute;
+  top: 15px;
+  right: 210px;
+}
+
+.div-notice {
+  width: 1000px;
+  height: 30px;
+  float: left;
+  margin-top: -30px;
+  text-align: center;
+  line-height: 30px;
+  font-family: STKaiTi;
+  font-weight: bolder;
+  font-size: 24px;
+  color: #FF0000;
+}
+
+.ul-navigate {
+  background-color: #F0F8FF;
+  border-radius: 6px;
+}
+
+.div-qrcode {
+  text-align: center;
+}
+
+.div-body {
+  height: 350px;
+  border-top-style: solid;
+  border-top-color: #9E9E9E;
+  border-bottom-style: solid;
+  border-bottom-color: #9E9E9E;
+  border-radius: 6px;
+}
+
+.div-area-one, .div-area-two {
+  width: 487px;
+  height: 345px;
+}
+
+.div-area-two {
+  float: right;
+  margin-top: -345px;
+  overflow: auto;
+}
+
+.div-table {
+  height: 345px;
+}
+
+.div-table th, .div-table td {
+  text-align: center;
+}
+
+.tr-title {
+  border-bottom-style: solid;
+  border-bottom-width: medium;
+}
+
+.tr-table {
+  border-bottom-style: solid;
+  border-bottom-width: thin;
+}
+
+.div-index {
+  width: 31px;
+}
+
+.div-content, .textarea-content {
+  width: 240px;
+}
+
+.textarea-content {
+  height: 70px;
+  border-radius: 6px;
+  border-color: #9E9E9E;
+}
+
+.div-type {
+  width: 60px
+}
+
+.div-created-time {
+  width: 74px;
+} 
+
+.div-foot {
+  background-color: #F0F8FF;
+  height: 30px;
+  text-align: center;
+  line-height: 30px;
+  border-top-style: solid;
+  border-top-color: #9E9E9E;
+  border-radius: 6px;
+}
+
+.span-copyright {
+  font-family: STKaiTi;
+  font-weight: bolder;
+  font-size: 18px;
+  color: #2E4358;
+}

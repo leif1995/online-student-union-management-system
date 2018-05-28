@@ -1,0 +1,250 @@
+body {
+  background-image: url("/images/background.jpg");
+  background-size: 100%;
+}
+
+.div-head, .div-body {
+  width: 1280px;
+  margin: 10px auto;
+}
+
+.div-head {
+  height: 100px;
+  border-bottom-style: solid;
+  border-bottom-color: #9E9E9E;
+  border-radius: 6px;
+}
+
+.div-time {
+  float: right;
+}
+
+.div-navigation {
+  width: 1110px;
+  margin-left: 100px;
+  margin-top: -75px;
+}
+
+.div-content {
+  text-align: center;
+}
+
+.textarea-content {
+  width: 270px;
+  height: 100px;
+  border-radius: 6px;
+  border-color: #9E9E9E;
+}
+
+.div-link {
+  float: right;
+  margin-top: -40px;
+}
+
+.ul-link {
+  list-style: none;
+}
+
+.ul-link li {
+  margin-bottom: 5px;
+}
+
+.div-breadcrumb {
+  margin-left: 100px;
+}
+
+.breadcrumb {
+  background-color: rgba(0, 0, 0, 0);
+}
+
+.div-notice {
+  width: 1273px;
+  height: 30px;
+  float: left;
+  margin-top: -53px;
+  margin-left: 4px;
+  text-align: center;
+  line-height: 30px;
+  font-family: STKaiTi;
+  font-weight: bolder;
+  font-size: 24px;
+  color: #FF0000;
+}
+
+.div-body {
+  height: 500px;
+  border-top-style: solid;
+  border-top-color: #9E9E9E;
+  border-radius: 6px;
+}
+
+.div-department-list {
+  width: 1031px;
+  height: 40px;
+  overflow: auto;
+}
+
+.div-search {
+  float: right;
+  margin-top: -48px;
+  margin-right: -15px;
+}
+
+.div-table {
+  margin-top: 2px;
+  height: 382px;
+}
+
+.div-table th, .div-table td {
+  text-align: center;
+}
+
+.tr-title {
+  border-bottom-style: solid;
+  border-bottom-width: medium;
+}
+
+.tr-table {
+  border-bottom-style: solid;
+  border-bottom-width: thin;
+} 
+
+.div-index {
+  width: 31px;
+}
+
+.div-minutes-name {
+  width: 230px;
+}
+
+.div-start-time {
+  width: 74px;
+}
+
+.div-place {
+  width: 173px;
+}
+
+.div-end-time {
+  width: 74px;
+}
+
+.div-attendees {
+  width: 230px;
+}
+
+.div-host {
+  width: 87px;
+}
+
+.div-created-time {
+  width: 74px;
+}
+
+.div-created-by {
+  width: 87px;
+}
+
+.div-updated-time {
+  width: 74px;
+}
+
+.div-updated-by {
+  width: 87px;
+}
+
+.div-footer {
+  text-align: center;
+}
+
+.div-pagination {
+  width: 1280px;
+  text-align: center;
+}
+
+.input-go {
+  width: 28px;
+  height: 20px;
+  text-align: center;
+}
+
+.div-button {
+  float: right;
+  margin-top: -38px;
+}
+
+.div-create {
+  margin-left: 82px;
+}
+
+.table-create {
+  background-color: #AEEEEE;
+}
+
+.table-create td {
+  text-align: center;
+  vertical-align: middle;
+  border-style: solid;
+  border-color: #9E9E9E;
+  border-width: thin;
+}
+
+.input-start-time, .input-end-time {
+  width: 172px;
+  height: 30px;
+  border: none;
+  text-align: center;
+}
+
+.input-place {
+  width: 150px;
+  height: 60px;
+  border: none;
+  text-align: center;
+}
+
+.input-minutes-name, .input-attendees {
+  width: 421px;
+  height: 30px;
+  border: none;
+  text-align: center;
+}
+
+.input-host, .input-leaver, .input-later, .input-absenteeismer {
+  width: 150px;
+  height: 30px;
+  border: none;
+  text-align: center;
+}
+
+.input-host:hover, .input-leaver:hover, .input-later:hover, .input-absenteeismer:hover {
+  cursor: pointer;
+}
+
+.div-list-orso {
+  height: 420px;
+}
+
+.div-modal-department-list {
+  margin-top: -15px;
+  width: 583px;
+  height: 61px;
+  overflow: auto;
+}
+
+.div-operation {
+  width: 76px;
+  height: 360px;
+  float: left;
+}
+
+.div-operation li {
+  padding-bottom: 59px;
+  margin-top: 106px;
+}
+
+.textarea-minutes-content {
+  width: 638px;
+  height: 254px;
+  border: none;
+}

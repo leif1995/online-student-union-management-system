@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>软件学院学生会内部管理系统</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/css/plan_completed.css" />
+  </head>
+  <body>
+    <div class="div-head">
+      <div class="div-time">
+        <span>${.now?string('yyyy年MM月dd日')}</span>
+        <span id="span_time"></span>
+      </div>
+      <img alt="logo" src="/images/logo.png" width="100px" height="100px" />
+      <div class="div-navigation">
+        <!-- 导航菜单start -->
+        <ul class="nav nav-pills nav-justified">
+          <li><a href="#">活动列表</a></li>
+          <li class="active"><a href="/plan/findActive">策划列表</a></li>
+          <li><a href="/department/findAll">管理列表</a></li>
+          <li><a href="/minutes/findByDepartmentName">会议记录</a></li>
+          <#if position.permission_id lte 4>
+            <li><a href="/recruitment/findApplication">招新申请<span class="badge pull-right">${recruitmentApplicationCount}</span></a></li>
+          </#if>
+          <#if position.permission_id lte 1>
+            <li><a href="#" data-toggle="modal" data-target="#modal_notice">紧急通知</a></li>
+          </#if>
+        </ul>
+        <!-- 导航菜单end -->
+        <!-- 模态框start -->
+        <div id="modal_notice" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+              <div class="modal-header">
+                <input type="button" class="close" data-dismiss="modal" aria-hidden="true" value="&times;" />
+                <h4 class="modal-title" id="myModalLabel">请输入紧急通知内容</h4>
+              </div>
+              <div class="modal-body div-content">
+                <textarea id="textarea_content" class="textarea-content"></textarea>
+              </div>
+              <div class="modal-footer">
+                <input type="button" class="btn btn-default" data-dismiss="modal" value="取消" />
+                <input type="button" id="input_notice_submit" class="btn btn-primary" value="提交" />
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- 模态框end -->
+      </div>
+      <div class="div-link">
+        <ul class="ul-link">
+          <li><a href="/information">${user.nickname}</a></li>
+          <li><a href="/index/rjxy">返回首页</a></li>
+          <li><a href="/logout">退出登录</a></li>
+        </ul>
+      </div>
+      <!-- 面包屑start -->
+      <div class="div-breadcrumb"> 
+        <ol class="breadcrumb">
+          <li><a href="/index/rjxy">首页</a></li>
+          <li class="active">已过策划</li>
+        </ol>
+      </div>
+      <!-- 面包屑end -->
+      <div class="div-notice">
+        <p id="p_notice">${notice.content}</p>
+      </div>
+    </div>
+    <div class="div-body">
+      <div class="div-left">
+        <!-- 导航菜单start -->
+        <ul class="nav nav-pills nav-stacked">
+          <li><a href="/plan/findActive">策划申请<span class="badge pull-right">${recordActiveCount}</span></a></li>
+          <li class="active"><a href="#">已过策划<span class="badge pull-right">${recordCompletedCount}</span></a></li>
+          <li><a href="/plan/findOverdue">过期策划<span class="badge pull-right">${recordOverdueCount}</span></a></li>
+        </ul>
+        <!-- 导航菜单end -->
+      </div>
+      <div class="div-right">
+        <!-- 搜索框start -->
+        <div class="div-search">
+          <form class="navbar-form navbar-left" role="search">
+            <div class="form-group">
+              <input type="text" id="input_search" class="form-control" placeholder="Search" value="${search}" />
+            </div>
+            <input type="button" id="input_search_submit" class="btn btn-default" value="搜索" />
+          </form>
+        </div>
+        <!-- 搜索框end -->
+        <#if planList?size gt 0>
+          <!-- 悬停表格start -->
+          <div class="div-table"> 
+            <table class="table-hover">
+              <tr height="30px" class="tr-title">
+                <th><input type="checkbox" id="input_checkbox_all" /></th>
+                <th><span>序号</span></th>
+                <th><span>名称</span></th>
+                <th><span>时间</span></th>
+                <th><span>地点</span></th>
+                <th><span>申请时间</span></th>
+                <th><span>申请人</span></th>
+                <th><span>审核时间</span></th>
+                <th><span>审核人</span></th>
+                <#if position.permission_id lte 2>
+                  <th><span>操作</span></th>
+                </#if>
+              </tr>
+              <#list planList as plan>
+                <tr height="50px" class="tr-table">
+                  <td><div class="div-checkbox"><input type="checkbox" class="input-checkbox" /></div></td>
+                  <td><div class="div-index"><span>${plan_index + 1}</span></div></td>
+                  <td><div class="div-name"><a href="/plan/information/completed/${plan.id}">${plan.plan_name}</a></div></td>
+                  <td><div class="div-date"><span>${plan.activity_date}</span></div></td>
+                  <td><div class="div-place"><span>${plan.activity_place}</span></div></td>
+                  <td><div class="div-created-time"><span>${plan.created_time}</span></div></td>
+                  <td><div class="div-created-by"><span>${plan.created_by}</span></div></td>
+                  <td><div class="div-updated-time"><span>${plan.updated_time}</span></div></td>
+                  <td><div class="div-updated-by"><span>${plan.updated_by}</span></div></td>
+	              <td>
+	                <#if position.permission_id lte 2>
+	                  <input type="button" class="btn btn-danger" data-toggle="modal" data-target="#modal_change_for_remove" value="删除" />
+	                </#if>
+	                <input type="hidden" class="plan-id" value="${plan.id}" />
+	              </td>
+                </tr>
+              </#list>
+            </table>
+          </div>    
+          <!-- 悬停表格end -->
+        <#else>
+          <img alt="no_data" src="/images/no_data.jpg" width="1025px" height="382px" />
+        </#if>
+        <!-- 分页start -->
+        <div class="div-pagination">
+          <ul class="pagination">
+            <li id="li_laquo"><a href="#">&laquo;</a></li>
+            <li id="li_lt"><a href="#">&lt;</a></li>
+            <li class="active"><a href="#" id="a_current_page">${currentPage}</a></li>
+            <li id="li_gt"><a href="#">&gt;</a></li>
+            <li id="li_raquo"><a href="#">&raquo;</a></li>
+            <li><a href="#" id="a_page_count">共&nbsp;${pageCount}&nbsp;页</a></li>
+            <li><a href="#"><input type="number" id="input_go" class="input-go" /></a></li>
+            <li id="li_go"><a href="#">Go</a></li>
+          </ul>
+        </div>
+        <!-- 分页end -->
+        <div class="div-button">
+          <#if position.permission_id lte 1>
+	        <input type="button" class="btn btn-danger" data-toggle="modal" data-target="#modal_change_for_remove_all" value="批量删除" />
+	      </#if>
+	      <input type="hidden" id="input_change_for_remove_all" />
+        </div>
+        <!-- 模态框start -->
+        <div id="modal_change_for_remove" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+              <div class="modal-header">
+                <input type="button" class="close" data-dismiss="modal" aria-hidden="true" value="&times;" />
+                <h4 class="modal-title" id="myModalLabel">确定删除如下记录吗</h4>
+              </div>
+              <div class="modal-body">
+                <table>
+                  <tr height="50px">
+                    <td><span>活动名称：</span></td>
+                    <td><span id="span_change_for_remove_name"></span></td>
+                  </tr>
+                  <tr height="50px">
+                    <td><span>活动时间：</span></td>
+                    <td><span id="span_change_for_remove_date"></span></td>
+                  </tr>
+                  <tr height="50px">
+                    <td><span>活动地点：</span></td>
+                    <td><span id="span_change_for_remove_place"></span></td>
+                  </tr>
+                </table>
+              </div>
+              <div class="modal-footer">
+                <input type="button" class="btn btn-default" data-dismiss="modal" value="取消" />
+                <input type="button" id="input_change_for_remove_submit" class="btn btn-danger" value="删除" />
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- 模态框end -->
+        <!-- 模态框start -->
+        <div id="modal_change_for_remove_all" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+              <div class="modal-header">
+                <input type="button" class="close" data-dismiss="modal" aria-hidden="true" value="&times;" />
+                <h4 class="modal-title" id="myModalLabel">确定删除所选记录吗</h4>
+              </div>
+              <div class="modal-footer">
+                <input type="button" class="btn btn-default" data-dismiss="modal" value="取消" />
+                <input type="button" id="input_change_for_remove_all_submit" class="btn btn-danger" value="删除" />
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- 模态框end -->
+      </div>
+    </div>
+  </body>
+  <script src="/js/jquery-3.3.1.min.js"></script>
+  <script src="/js/bootstrap.min.js"></script>
+  <script src="/js/plan_completed.js"></script>
+</html>

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>首页</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/css/feedback_list.css" />
+  </head>
+  <body>
+    <div class="div-head">
+      <img alt="logo" src="/images/rjxy.png" class="img-logo" width="1000px" height="150px" />
+      <span class="span-welcome">欢迎${user.department_name}${user.nickname}${user.position_name}</span>
+      <div class="div-time">
+        <span>${.now?string('yyyy年MM月dd日')}</span>
+        <span id="span_time"></span>
+      </div>
+      <div class="div-notice">
+        <p>${notice.content}</p>
+      </div>
+      <!-- 导航菜单start -->
+      <ul class="nav nav-pills nav-justified ul-navigate">
+        <li><a href="/index/rjxy">首页</a></li>
+        <li><a href="http://www5.ncwu.edu.cn/ruanjian/" target="_blank">学院主页</a></li>
+        <li><a href="https://weibo.com/u/3841438162" target="_blank">院会微博</a></li>
+        <li><a href="#" data-toggle="modal" data-target="#modal_xiaoruan">小软在线</a></li>
+        <li class="active"><a href="#">问题反馈<span class="badge pull-right">${feedbackCount}</span></a></li>
+        <li><a href="/activity/findActive">内部系统</a></li>
+        <li><a href="/logout">退出登陆</a></li>
+      </ul>
+      <!-- 导航菜单end -->
+      <!-- 模态框start -->
+      <div id="modal_xiaoruan" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <input type="button" class="close" data-dismiss="modal" aria-hidden="true" value="&times;" />
+              <h4 class="modal-title" id="myModalLabel">欢迎扫描下方二维码添加软件学院学生会官方微信</h4>
+            </div>
+            <div class="modal-body div-qrcode">
+              <img alt="index_qrcode" src="/images/index_qrcode.png" />   
+            </div>
+            <div class="modal-footer">
+              <h4>这里还有小软的本体QQ：486473727</h4>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- 模态框end -->
+    </div>
+    <div class="div-body">
+      <div id="div_area_one" class="div-area-one"></div>
+      <div class="div-area-two">
+        <#if feedbackList?size gt 0>
+          <!-- 悬停表格start -->
+          <div class="div-table"> 
+            <table class="table-hover">
+              <tr height="30px" class="tr-title">
+                <th><span>序号</span></th>
+                <th><span>内容</span></th>
+                <th><span>类型</span></th>
+                <th><span>反馈时间</span></th>
+                <#if position.permission_id lte 3 && position.permission_id != 2>
+                  <th width="80px"><span>操作</span></th>
+                </#if>
+              </tr>
+              <#list feedbackList as feedback>
+                <tr height="70px" class="tr-table">
+                <td><div class="div-index"><span>${feedback_index + 1}</span></div></td>
+                  <td><div class="div-content"><textarea class="textarea-content" readonly>${feedback.feedback_content}</textarea></div></td>
+                  <td><div class="div-type"><span>${feedback.type}</span></div></td>
+                  <td><div class="div-created-time"><span>${feedback.created_time}</span></div></td>
+                  <td>
+                    <#if position.permission_id lte 3 && position.permission_id != 2>
+                      <input type="button" class="btn btn-danger" data-toggle="modal" data-target="#modal_remove" value="删除" />
+                    </#if>
+                    <input type="hidden" value="${feedback.id}" />
+                  </td>
+                </tr>
+              </#list>
+            </table>
+          </div>    
+          <!-- 悬停表格end -->
+        <#else>
+          <img alt="no_data" src="/images/no_data.jpg" width="487px" height="345px" />
+        </#if>
+        <!-- 模态框start -->
+        <div id="modal_remove" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+              <div class="modal-header">
+                <input type="button" class="close" data-dismiss="modal" aria-hidden="true" value="&times;" />
+                <h4 class="modal-title" id="myModalLabel">确定删除吗</h4>
+              </div>
+              <div class="modal-footer">
+                <input type="button" class="btn btn-default" data-dismiss="modal" value="取消" />
+                <input type="button" id="input_remove_submit" class="btn btn-danger" value="删除" />
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- 模态框end -->
+      </div>
+    </div>
+    <div class="div-foot">
+      <span class="span-copyright">版权所有&copy;华北水利水电大学软件学院 | 地址:河南省郑州市北环路36号 | 邮编：450045 | 联系方式：0371-69127680</span>
+    </div>
+  </body>
+  <script src="/js/jquery-3.3.1.min.js"></script>
+  <script src="/js/bootstrap.min.js"></script>
+  <script src="/js/feedback_list.js"></script>
+  <script src="/js/diagram/amcharts.js"></script>
+  <script src="/js/diagram/serial.js"></script>
+  <script src="/js/diagram/amexport.js"></script>
+  <script src="/js/diagram/rgbcolor.js"></script>
+  <script src="/js/diagram/canvg.js"></script>
+  <script src="/js/diagram/jspdf.js"></script>
+  <script src="/js/diagram/filesaver.js"></script>
+  <script src="/js/diagram/jspdf.plugin.addimage.js"></script>
+</html>

@@ -1,0 +1,131 @@
+body {
+  background-image: url("/images/background.jpg");
+  background-size: 100%;
+}
+
+.div-head, .div-body {
+  width: 1280px;
+  margin: 10px auto;
+}
+
+.div-head {
+  height: 100px;
+  border-bottom-style: solid;
+  border-bottom-color: #9E9E9E;
+  border-radius: 6px;
+}
+
+.div-time {
+  float: right;
+}
+
+.div-navigation {
+  width: 1110px;
+  margin-left: 100px;
+  margin-top: -75px;
+}
+
+.div-content {
+  text-align: center;
+}
+
+.textarea-content {
+  width: 270px;
+  height: 100px;
+  border-radius: 6px;
+  border-color: #9E9E9E;
+}
+
+.div-link {
+  float: right;
+  margin-top: -40px;
+}
+
+.ul-link {
+  list-style: none;
+}
+
+.ul-link li {
+  margin-bottom: 5px;
+}
+
+.div-breadcrumb {
+  margin-left: 100px;
+}
+
+.breadcrumb {
+  background-color: rgba(0, 0, 0, 0);
+}
+
+.div-notice {
+  width: 1273px;
+  height: 30px;
+  float: left;
+  margin-top: -53px;
+  margin-left: 4px;
+  text-align: center;
+  line-height: 30px;
+  font-family: STKaiTi;
+  font-weight: bolder;
+  font-size: 24px;
+  color: #FF0000;
+}
+
+.div-body {
+  height: 500px;
+  border-top-style: solid;
+  border-top-color: #9E9E9E;
+  border-radius: 6px;
+}
+
+.div-information {
+  width: 1030px;
+  height: 500px;
+}
+
+.table-information td {
+  text-align: center;
+  vertical-align: middle;
+  border-style: solid;
+  border-color: #9E9E9E;
+  border-width: thin;
+}
+
+.input-plan-name, .input-activity-date, .input-activity-place, .input-activity-theme, .input-activity-object, .select-plan-type, .input-department-name, .input-created-time, .input-created-by, .input-updated-time, .input-updated-by {
+  width: 242px;
+  height: 58px;
+  border: none;
+  text-align: center;
+}
+
+.textarea-activity-background, .textarea-activity-purpose {
+  width: 340px;
+  height: 254px;
+  border: none;
+}
+
+.div-diagram {
+  float: left;
+  margin-top: -500px;
+  margin-left: 1030px;
+  border-left-style: dashed;
+  border-left-color: #9E9E9E;
+  border-radius: 6px;
+  width: 250px;
+  height: 250px;
+}
+
+.div-button {
+  float: left;
+  margin-top: -250px;
+  margin-left: 1030px;
+  border-top-style: dashed;
+  border-top-color: #9E9E9E;
+  border-left-style: dashed;
+  border-left-color: #9E9E9E;
+  border-radius: 6px;
+  width: 250px;
+  height: 250px;
+  text-align: center;
+  line-height: 250px;
+}

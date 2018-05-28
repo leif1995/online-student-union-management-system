@@ -1,0 +1,13 @@
+spring:
+  datasource:
+    url: jdbc:mysql://127.0.0.1:3306/online-student-union-management-system
+    username: root
+    password: root
+    driver-class-name: com.mysql.jdbc.Driver
+  freemarker:
+    suffix: .html
+  servlet:
+    multipart:
+      max-file-size: 100MB
+      max-request-size: 1000MB
+    

@@ -1,0 +1,157 @@
+body {
+  background-image: url("/images/background.jpg");
+  background-size: 100%;
+}
+
+.div-head, .div-body, .div-foot {
+  width: 1000px;
+  margin: 10px auto;
+}
+
+.div-head {
+  height: 245px;
+  border-bottom-style: solid;
+  border-bottom-color: #9E9E9E;
+  border-radius: 6px;
+}
+
+.img-logo {
+  margin-bottom: 50px;
+}
+
+.span-welcome {
+  font-family: STXingkai;
+  font-weight: bolder;
+  font-size: 32px;
+  color: #2E4358;
+  float: right;
+  margin-top: -70px;
+}
+
+.div-time {
+  position: absolute;
+  top: 15px;
+  right: 210px;
+}
+
+.ul-navigate {
+  background-color: #F0F8FF;
+  border-radius: 6px;
+}
+
+.div-qrcode {
+  text-align: center;
+}
+
+.div-content {
+  text-align: center;
+}
+
+.textarea-content {
+  width: 270px;
+  height: 100px;
+  border-radius: 6px;
+  border-color: #9E9E9E;
+}
+
+.div-body, .div-left, .div-right {
+  height: 700px;
+}
+
+.div-left {
+  width: 245px;
+  border-right-style: solid;
+  border-right-color: #9E9E9E;
+  border-top-style: solid;
+  border-top-color: #9E9E9E;
+  border-bottom-style: solid;
+  border-bottom-color: #9E9E9E;
+  border-radius: 6px;
+  overflow: auto;
+}
+
+.div-left li {
+  padding-bottom: 20px;
+  text-align: center;
+}
+
+.div-right, .div-title, .div-table {
+  width: 745px;
+}
+
+.div-right {
+  float: right;
+  margin-top: -700px;
+  border-left-style: solid;
+  border-left-color: #9E9E9E;
+  border-top-style: solid;
+  border-top-color: #9E9E9E;
+  border-bottom-style: solid;
+  border-bottom-color: #9E9E9E;
+  border-radius: 6px;
+}
+
+.div-title {
+  height: 100px;
+  text-align: center;
+}
+
+.span-title {
+  font-family: STXingkai;
+  font-weight: bolder;
+  font-size: 36px;
+  color: #2E4358;
+}
+
+.div-table {
+  height: 600px;
+}
+
+.table-recruitment td {
+  text-align: center;
+  vertical-align: middle;
+  border-style: solid;
+  border-color: #9E9E9E;
+  border-width: thin;
+}
+
+.input-nickname, .select-gender, .input-birthday, .input-major, .input-classs, .input-native-place, .input-username, .select-department-name, .input-phone, .input-email, .input-qq {
+  width: 150px;
+  height: 30px;
+  border: none;
+  text-align: center;
+}
+
+.img-head-portrait {
+  border-style: solid;
+  border-color: #9E9E9E;
+  border-width: 3px;
+}
+
+.img-head-portrait:hover {
+  border-width: 5px;
+  cursor: pointer;
+}
+
+.textarea-hobby, .textarea-self-appraisal, .textarea-department-understanding, .textarea-awards-and-achievements {
+  width: 680px;
+  height: 112px;
+  border: none;
+}
+
+.div-foot {
+  background-color: #F0F8FF;
+  height: 30px;
+  text-align: center;
+  line-height: 30px;
+  border-top-style: solid;
+  border-top-color: #9E9E9E;
+  border-radius: 6px;
+}
+
+.span-copyright {
+  font-family: STKaiTi;
+  font-weight: bolder;
+  font-size: 18px;
+  color: #2E4358;
+}
