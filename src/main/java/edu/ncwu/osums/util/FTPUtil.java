@@ -38,7 +38,7 @@ public class FTPUtil {
         }
     }
 
-    public static void deleteFile(String fileName, String fTPPath){
+    public static void deleteFile(String fileName, String fTPPath) {
         FTPClient fTPClient = new FTPClient();
 
         try {
