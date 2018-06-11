@@ -56,7 +56,7 @@
         </ul>
       </div>
       <!-- 面包屑start -->
-      <div class="div-breadcrumb"> 
+      <div class="div-breadcrumb">
         <ol class="breadcrumb">
           <li><a href="/index/rjxy">首页</a></li>
           <li class="active">首页管理</li>
@@ -90,7 +90,7 @@
         <!-- 搜索框end -->
         <#if indexsList?size gt 0>
           <!-- 悬停表格start -->
-          <div class="div-table"> 
+          <div class="div-table">
             <table class="table-hover">
               <tr height="30px" class="tr-title">
                 <th><span>序号</span></th>
@@ -109,7 +109,7 @@
                 <tr height="50px" class="tr-table">
                   <td><div class="div-indexs"><span>${indexs_index + 1}</span></div></td>
                   <td><div class="div-name"><a href="#" class="a-indexs-name" data-toggle="modal" data-target="#modal_information">${indexs.indexs_name}</a></div></td>
-                  <td class="td-type"><div class="div-type"><span>${indexs.type}</span></div></td>
+                  <td><div class="div-type"><span>${indexs.type}</span></div></td>
                   <td><div class="div-attachment"><a href="ftp://127.0.0.1/index/${indexs.id}${indexs.suffix}">${indexs.attachment}${indexs.suffix}</a></div></td>
                   <td><div class="div-created-time"><span>${indexs.created_time}</span></div></td>
                   <td><div class="div-created-by"><span>${indexs.created_by}</span></div></td>
@@ -127,7 +127,7 @@
                 </tr>
               </#list>
             </table>
-          </div>    
+          </div>
           <!-- 悬停表格end -->
         <#else>
           <img alt="no_data" src="/images/no_data.jpg" width="1025px" height="382px" />
